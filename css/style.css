@@ -1,0 +1,460 @@
+/* ----------------------------------------------------
+   RESET GENERAL
+---------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #F7FFF7;
+    color: #1A535C;
+    line-height: 1.4;
+}
+
+a {
+    text-decoration: none;
+    color: #1A535C;
+    transition: 0.2s;
+}
+
+a:hover {
+    color: #FF6B6B;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ----------------------------------------------------
+   ANIMACIONES
+---------------------------------------------------- */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* ----------------------------------------------------
+   HEADER
+---------------------------------------------------- */
+.main-header {
+    background: white;
+    border-bottom: 3px solid #FFE66D;
+    padding: 12px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.nav-bar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 700;
+    color: #FF6B6B;
+}
+
+/* ----------------------------------------------------
+   NAV LINKS
+---------------------------------------------------- */
+.nav-right a {
+    margin-left: 18px;
+    font-weight: 500;
+}
+
+.btn-primary-small {
+    padding: 8px 16px;
+    background: #4ECDC4;
+    color: white !important;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-primary-small:hover {
+    background: #3bb7a7;
+}
+
+.btn-logout {
+    color: #FF6B6B !important;
+    font-weight: 600;
+}
+
+/* ----------------------------------------------------
+   CONTENEDOR GENERAL
+---------------------------------------------------- */
+.main-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    animation: fadeIn .4s ease;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* ----------------------------------------------------
+   HOME / INDEX
+---------------------------------------------------- */
+
+.home-wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    animation: fadeIn .4s ease;
+}
+
+.home-hero {
+    background: white;
+    padding: 45px;
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+    border: 2px solid #E0F2EF;
+}
+
+.home-hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #FF6B6B;
+    margin-bottom: 15px;
+}
+
+.home-hero p {
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+.home-btn, .home-btn-sec {
+    display: inline-block;
+    padding: 12px 22px;
+    margin: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+}
+
+.home-btn {
+    background: #4ECDC4;
+    color: white;
+}
+
+.home-btn:hover {
+    background: #3bb7a7;
+}
+
+.home-btn-sec {
+    border: 2px solid #4ECDC4;
+    color: #1A535C;
+}
+
+.home-btn-sec:hover {
+    background: #4ECDC4;
+    color: white;
+}
+
+.home-section {
+    margin-top: 50px;
+}
+
+.home-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.home-feature {
+    background: white;
+    padding: 22px;
+    border-radius: 18px;
+    text-align: center;
+    border: 2px solid #E0F2EF;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+}
+
+.home-feature .emoji {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.home-feature h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #FF6B6B;
+    margin-bottom: 7px;
+}
+
+.home-feature p {
+    font-size: 14px;
+}
+
+/* ----------------------------------------------------
+   CARDS DE FORMULARIOS (login / registro / crear viaje)
+---------------------------------------------------- */
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 26px;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 11px 13px;
+    border: 2px solid #E0F2EF;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #F7FFF7;
+    transition: .2s;
+}
+
+textarea {
+    min-height: 120px;
+}
+
+input:focus, textarea:focus {
+    border-color: #4ECDC4;
+    background: #fff;
+}
+
+button {
+    padding: 12px;
+    background: #FF6B6B;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button:hover {
+    background: #e85d5d;
+}
+
+/* ----------------------------------------------------
+   CATEGORÍAS HORIZONTALES (MIS VIAJES)
+---------------------------------------------------- */
+.categories-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.category-box {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    border: 2px solid #E0F2EF;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+
+.section-title {
+    font-size: 20px;
+    color: #FF6B6B;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.category-empty {
+    font-size: 14px;
+    color: #888;
+}
+
+/* ----------------------------------------------------
+   GRID DE CARDS DE VIAJE
+---------------------------------------------------- */
+.trips-grid {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+/* ----------------------------------------------------
+   CARD INDIVIDUAL DE VIAJE
+---------------------------------------------------- */
+.trip-card-v2 {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #E0F2EF;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    transition: .25s;
+}
+
+.trip-card-v2:hover {
+    transform: translateY(-4px);
+    border-color: #4ECDC4;
+}
+
+.trip-card-img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+.trip-card-content {
+    padding: 15px;
+}
+
+.trip-card-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.trip-card-info {
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.trip-status-v2 {
+    padding: 4px 9px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-top: 6px;
+    display: inline-block;
+}
+
+.status-v2-pendiente {
+    background: #FFE66D;
+}
+
+.status-v2-curso {
+    background: #4ECDC4;
+    color: white;
+}
+
+.status-v2-finalizado {
+    background: #999;
+    color: white;
+}
+
+.trip-card-btn {
+    display: block;
+    margin-top: 12px;
+    background: #FF6B6B;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: 600;
+    color: white;
+}
+
+.trip-card-btn:hover {
+    background: #e85d5d;
+}
+
+/* ----------------------------------------------------
+   DASHBOARD DEL VIAJE
+---------------------------------------------------- */
+.viaje-header-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+}
+
+.viaje-info-card {
+    background: white;
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    margin-top: 25px;
+}
+
+.viaje-info-card p {
+    margin: 8px 0;
+}
+
+.dashboard-block {
+    margin-top: 35px;
+    background: white;
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.dashboard-block h3 {
+    font-size: 20px;
+    color: #FF6B6B;
+    margin-bottom: 12px;
+}
+
+.participant {
+    padding: 10px;
+    border-bottom: 1px solid #E0F2EF;
+}
+
+.comment {
+    background: #F7FFF7;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #E0F2EF;
+    margin-bottom: 12px;
+}
+
+.btn-subplan {
+    background: #4ECDC4;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+/* ----------------------------------------------------
+   FOOTER
+---------------------------------------------------- */
+.main-footer {
+    margin-top: 50px;
+    text-align: center;
+    padding: 22px;
+    color: #4ECDC4;
+}
+
+/* ----------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------- */
+@media (max-width: 900px) {
+    .categories-wrapper {
+        flex-direction: column;
+    }
+
+    .home-hero {
+        padding: 25px;
+    }
+}
+
+
