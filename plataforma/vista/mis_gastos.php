@@ -5,8 +5,8 @@ require_once("../../sistema/inc/sesiones_cotrip.php");
 $usuario_id = $_SESSION["usuario_id"];
 
 $gastoClass = new Gasto();
-$gastos = $gastoClass->obtenerGastosUsuario($usuario_id);     // Debe incluir columna pagado
-$totalPendiente = $gastoClass->totalUsuario($usuario_id);     // Solo pagados = 0
+$gastos = $gastoClass->obtenerGastosUsuario($usuario_id);    
+$totalPendiente = $gastoClass->totalUsuario($usuario_id);    
 
 include("../../sistema/inc/header.php");
 ?>

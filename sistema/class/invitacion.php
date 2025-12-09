@@ -10,11 +10,7 @@ class Invitacion {
         $this->pdo = $db->pdo;
     }
 
-    /**
-     * Crear una invitación nueva
-     * usa: viaje_id, email_invitado, token
-     * estado = 'pendiente' por defecto (según la tabla)
-     */
+   
     public function crearInvitacion($viaje_id, $email_invitado, $token)
     {
         $sql = "INSERT INTO invitaciones (viaje_id, email_invitado, token)
@@ -26,9 +22,7 @@ class Invitacion {
         return $this->pdo->lastInsertId();
     }
 
-    /**
-     * Obtener una invitación por token (para ver/aceptar/rechazar)
-     */
+   
     public function obtenerPorToken($token)
     {
         $sql = "SELECT * FROM invitaciones WHERE token = ?";
@@ -37,9 +31,7 @@ class Invitacion {
         return $stmt->fetch();
     }
 
-    /**
-     * Marcar invitación como aceptada y vincularla a un usuario
-     */
+   
     public function aceptar($id_invitacion, $usuario_id)
     {
         $sql = "UPDATE invitaciones 
@@ -50,9 +42,7 @@ class Invitacion {
         return $stmt->execute([$usuario_id, $id_invitacion]);
     }
 
-    /**
-     * Marcar invitación como rechazada
-     */
+   
     public function rechazar($id_invitacion)
     {
         $sql = "UPDATE invitaciones 
@@ -63,9 +53,7 @@ class Invitacion {
         return $stmt->execute([$id_invitacion]);
     }
 
-    /**
-     * Listar invitaciones de un viaje (para que el anfitrión las vea)
-     */
+  
     public function obtenerInvitacionesViaje($viaje_id)
     {
         $sql = "SELECT * FROM invitaciones

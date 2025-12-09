@@ -1,9 +1,9 @@
 <?php
 
-// Cargar la conexión a la BD
+
 require_once(__DIR__ . "/../class/db.php");
 
-// Cargar clases principales
+
 require_once(__DIR__ . "/../class/autenticacion.php");
 require_once(__DIR__ . "/../class/usuario.php");
 require_once(__DIR__ . "/../class/viaje.php");

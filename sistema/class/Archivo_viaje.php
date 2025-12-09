@@ -8,7 +8,7 @@ class Archivo_viaje {
         $this->db = $db->pdo;
     }
 
-    // Insertar un archivo (en nuestro caso, una foto)
+ 
     public function agregarArchivo($viaje_id, $usuario_id, $ruta, $tipo = "foto") {
         $sql = "INSERT INTO archivos_viaje (viaje_id, usuario_id, ruta, tipo)
                 VALUES (:viaje, :usuario, :ruta, :tipo)";
@@ -21,7 +21,7 @@ class Archivo_viaje {
         ]);
     }
 
-    // Obtener todas las fotos (tipo = 'foto') de un viaje
+  
     public function obtenerFotosViaje($viaje_id) {
         $sql = "SELECT * FROM archivos_viaje
                 WHERE viaje_id = :viaje AND tipo = 'foto'
@@ -31,7 +31,7 @@ class Archivo_viaje {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Obtener un archivo concreto
+    
     public function obtenerArchivo($id) {
         $sql = "SELECT * FROM archivos_viaje WHERE id = :id";
         $stmt = $this->db->prepare($sql);
@@ -39,7 +39,7 @@ class Archivo_viaje {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Borrar un archivo
+    
     public function borrarArchivo($id) {
         $sql = "DELETE FROM archivos_viaje WHERE id = :id";
         $stmt = $this->db->prepare($sql);

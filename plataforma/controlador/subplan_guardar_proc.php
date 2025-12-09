@@ -13,7 +13,7 @@ $subplanClass = new Subplan();
 
 $imagen_final = null;
 
-/* ============ Subida de imagen ============ */
+
 if (!empty($_FILES["imagen"]["tmp_name"])) {
 
     $ext = pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION);
@@ -28,7 +28,7 @@ if (!empty($_FILES["imagen"]["tmp_name"])) {
     $imagen_final = "/cotrip/uploads/subplanes/" . $viaje_id . "/" . $nombre;
 }
 
-/* ============ Guardar subplan ============ */
+
 
 $subplan_id = $subplanClass->crearSubplan(
     $viaje_id,

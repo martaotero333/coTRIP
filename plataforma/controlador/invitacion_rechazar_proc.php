@@ -1,7 +1,7 @@
 <?php
 require_once("../../sistema/inc/include_classes.php");
 
-// Validar token
+
 if (!isset($_GET["token"]) || trim($_GET["token"]) === "") {
     include("../../sistema/inc/header.php");
     echo "<div class='form-container'><h2>Error</h2><p>Token no válido.</p></div>";
@@ -16,7 +16,7 @@ $viajeClass      = new Viaje();
 
 $inv = $invitacionClass->obtenerPorToken($token);
 
-// Invitación inexistente
+
 if (!$inv) {
     include("../../sistema/inc/header.php");
     echo "<div class='form-container'><h2>Invitación no válida</h2><p>Este enlace no corresponde a ninguna invitación.</p></div>";
@@ -24,7 +24,6 @@ if (!$inv) {
     exit;
 }
 
-// Comprobar estado
 if ($inv["estado"] != "pendiente") {
     include("../../sistema/inc/header.php");
     ?>
@@ -39,7 +38,7 @@ if ($inv["estado"] != "pendiente") {
     exit;
 }
 
-// Comprobar que el viaje NO ha empezado
+
 $viaje = $viajeClass->obtenerViaje($inv["viaje_id"]);
 $hoy   = date("Y-m-d");
 
@@ -61,7 +60,7 @@ if ($viaje && $hoy >= $viaje["fecha_inicio"]) {
     exit;
 }
 
-// Rechazar la invitación
+
 $invitacionClass->rechazar($inv["id"]);
 
 include("../../sistema/inc/header.php");

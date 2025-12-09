@@ -2,7 +2,7 @@
 require_once("../../sistema/inc/include_classes.php");
 require_once("../../sistema/inc/sesiones_cotrip.php");
 
-// Validar viaje_id
+
 if (!isset($_GET["id"]) || !ctype_digit($_GET["id"])) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
@@ -16,13 +16,13 @@ $valoracionClass = new Valoracion();
 
 $viaje = $viajeClass->obtenerViaje($viaje_id);
 
-// Permisos: usuario debe participar o ser anfitrión
+
 if (!$viaje || !$viajeClass->usuarioPuedeAcceder($usuario_id, $viaje_id)) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
 }
 
-// Validación fecha
+
 $hoy       = date("Y-m-d");
 $bloqueado = ($hoy < $viaje["fecha_inicio"]);
 
@@ -113,7 +113,7 @@ include("../../sistema/inc/header.php");
 
         <?php $valorActual = $miValoracion ? (int)$miValoracion["estrellas"] : 0; ?>
 
-        <!-- FORMULARIO -->
+      
         <form action="/cotrip/plataforma/controlador/valorar_viaje_proc.php" method="POST">
 
             <div id="estrellas-wrapper" class="stars-wrapper">

@@ -2,7 +2,7 @@
 $pagina_publica = true;
 require_once("../../sistema/inc/include_classes.php");
 
-// Validar token
+
 if (!isset($_GET["token"]) || trim($_GET["token"]) === "") {
     include("../../sistema/inc/header.php");
     echo '<div style="width:90%; max-width:600px; margin:30px auto; text-align:center;">

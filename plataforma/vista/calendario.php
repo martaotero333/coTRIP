@@ -5,18 +5,16 @@ require_once("../../sistema/inc/sesiones_cotrip.php");
 $usuario_id = $_SESSION["usuario_id"];
 $viajeClass = new Viaje();
 
-// Viajes creados por ti
+
 $misViajes = $viajeClass->obtenerViajesCreados($usuario_id);
 
-// Viajes donde estás aceptada
+
 $viajesAceptados = $viajeClass->obtenerViajesAceptados($usuario_id);
 
-// Unificamos todos los viajes
+
 $viajes = array_merge($misViajes, $viajesAceptados);
 
-/* ============================================================
-   COLORES
-============================================================ */
+
 function colorPorViaje($viaje_id) {
     $colores = [
         "#ffadad", "#ffd6a5", "#fdffb6", "#caffbf",
@@ -38,22 +36,18 @@ function fondoMultiple($colores) {
     return rtrim($grad, ", ") . ")";
 }
 
-/* ============================================================
-   MES / AÑO
-============================================================ */
+
 $mes = isset($_GET["mes"]) ? intval($_GET["mes"]) : date("n");
 $anio = isset($_GET["anio"]) ? intval($_GET["anio"]) : date("Y");
 
-// Días
+
 $primerDia = mktime(0, 0, 0, $mes, 1, $anio);
 $nombreMes = strftime("%B", $primerDia);
 $diasMes = date("t", $primerDia);
 $diaSemana = date("w", $primerDia);
 if ($diaSemana == 0) $diaSemana = 7;
 
-/* ============================================================
-   MARCAR DÍAS CON COLORES
-============================================================ */
+
 $diasMarcados = [];
 
 foreach ($viajes as $v) {
@@ -64,7 +58,7 @@ foreach ($viajes as $v) {
     for ($ts = $inicio; $ts <= $fin; $ts += 86400) {
         if (date("n", $ts) == $mes && date("Y", $ts) == $anio) {
             $fecha = date("Y-m-d", $ts);
-            $diasMarcados[$fecha][] = $color; // varios colores si hay varios viajes
+            $diasMarcados[$fecha][] = $color; 
         }
     }
 }
@@ -76,7 +70,7 @@ include("../../sistema/inc/header.php");
 
     <h2 style="margin-bottom:20px;">Calendario de viajes</h2>
 
-    <!-- Navegador de meses -->
+   
     <div style="margin-bottom:20px;">
         <a href="?mes=<?= ($mes == 1 ? 12 : $mes-1) ?>&anio=<?= ($mes == 1 ? $anio-1 : $anio) ?>"
            style="margin-right:20px;">⬅ Mes anterior</a>
@@ -89,7 +83,7 @@ include("../../sistema/inc/header.php");
            style="margin-left:20px;">Mes siguiente ➡</a>
     </div>
 
-    <!-- Calendario -->
+    
     <table style="
         width:100%;
         border-collapse:collapse;
@@ -121,10 +115,10 @@ include("../../sistema/inc/header.php");
                 $colores = $diasMarcados[$fechaActual];
 
                 if (count($colores) == 1) {
-                    // Un viaje → color sólido
+                    
                     echo "background:".$colores[0]."; font-weight:bold;";
                 } else {
-                    // Varios viajes → fondo mixto
+                    
                     echo "background:".fondoMultiple($colores)."; font-weight:bold;";
                 }
             }
@@ -138,7 +132,7 @@ include("../../sistema/inc/header.php");
         ?>
     </table>
 
-    <!-- LEYENDA DE VIAJES -->
+    
     <h3 style="margin-top:30px;">Leyenda</h3>
 
     <?php foreach ($viajes as $v): ?>

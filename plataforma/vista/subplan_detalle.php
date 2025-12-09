@@ -7,7 +7,7 @@ $viajeClass   = new Viaje();
 
 $usuario_id = $_SESSION["usuario_id"];
 
-// Validar parámetro id
+
 if (!isset($_GET["id"]) || !ctype_digit($_GET["id"])) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
@@ -23,7 +23,7 @@ if (!$subplan) {
 
 $viaje = $viajeClass->obtenerViaje($subplan["viaje_id"]);
 
-// Seguridad: que el viaje exista y que el usuario pueda acceder a él
+
 if (!$viaje || !$viajeClass->usuarioPuedeAcceder($usuario_id, $viaje["id"])) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
@@ -31,7 +31,7 @@ if (!$viaje || !$viajeClass->usuarioPuedeAcceder($usuario_id, $viaje["id"])) {
 
 $esAnfitrion = ($viaje["usuario_id"] == $usuario_id);
 
-// Info de apuntados
+
 $ya_apuntado = $subplanClass->usuarioApuntado($subplan_id, $usuario_id);
 $apuntados   = $subplanClass->obtenerApuntados($subplan_id);
 
@@ -65,7 +65,7 @@ include("../../sistema/inc/header.php");
         margin-bottom: 24px;
     }
 
-    /* FOTO MÁS PEQUEÑA */
+   
     .subplan-main-card img {
         width: 100%;
         max-width: 350px;
@@ -118,7 +118,7 @@ include("../../sistema/inc/header.php");
         margin-top: 22px;
     }
 
-    /* BOTÓN DESAPUNTAR EN BLANCO */
+    
     .btn-logout {
         background: #c70000;
         color: white !important;
@@ -162,7 +162,7 @@ include("../../sistema/inc/header.php");
 
     </div>
 
-    <!-- COMENTARIOS DEL SUBPLAN -->
+    
     <div class="subplan-block">
         <h3>💬 Comentarios de la actividad</h3>
 
@@ -172,7 +172,7 @@ include("../../sistema/inc/header.php");
         </a>
     </div>
 
-    <!-- APUNTADOS + BOTÓN APUNTAR/DESAPUNTAR -->
+    
     <div class="subplan-block">
         <h3>👥 Personas apuntadas</h3>
 
@@ -188,7 +188,7 @@ include("../../sistema/inc/header.php");
             </ul>
         <?php endif; ?>
 
-        <!-- BOTÓN APUNTAR / DESAPUNTAR -->
+       
         <?php if ($ya_apuntado): ?>
 
             <form action="/cotrip/plataforma/controlador/subplan_desapuntar_proc.php" method="POST">
@@ -206,7 +206,7 @@ include("../../sistema/inc/header.php");
         <?php endif; ?>
     </div>
 
-    <!-- VOLVER AL VIAJE -->
+   
     <div class="subplan-back">
         <a class="btn-primary-small"
            href="/cotrip/plataforma/vista/viaje_dashboard.php?id=<?= $viaje['id'] ?>">

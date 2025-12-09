@@ -2,7 +2,7 @@
 require_once("../../sistema/inc/include_classes.php");
 require_once("../../sistema/inc/sesiones_cotrip.php");
 
-// Validar datos de entrada
+
 if (!isset($_POST["viaje_id"]) || !ctype_digit($_POST["viaje_id"])) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
@@ -15,7 +15,7 @@ $usuario_id = $_SESSION["usuario_id"];
 $viajeClass      = new Viaje();
 $invitacionClass = new Invitacion();
 
-// Comprobar viaje y que el usuario sea anfitrión
+
 $viaje = $viajeClass->obtenerViaje($viaje_id);
 
 if (!$viaje || $viaje["usuario_id"] != $usuario_id) {
@@ -23,19 +23,19 @@ if (!$viaje || $viaje["usuario_id"] != $usuario_id) {
     exit;
 }
 
-// No permitir nuevas invitaciones si el viaje ya ha empezado
+
 $hoy        = date("Y-m-d");
 $bloqueado  = ($hoy >= $viaje["fecha_inicio"]);
-$enlace     = null; // sólo se rellenará si se crea la invitación correctamente
+$enlace     = null; 
 
 if (!$bloqueado) {
-    // generar token único
+   
     $token = bin2hex(random_bytes(16));
 
-    // crear invitación
+    
     $invitacion_id = $invitacionClass->crearInvitacion($viaje_id, $email, $token);
 
-    // enlace público de la invitación
+    
     $enlace = "http://" . $_SERVER["HTTP_HOST"] . "/cotrip/plataforma/vista/ver_invitacion.php?token=" . $token;
 }
 

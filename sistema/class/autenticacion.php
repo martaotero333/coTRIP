@@ -10,7 +10,7 @@ class Autenticacion {
         $this->pdo = $db->pdo;
     }
 
-    // Crear autenticación
+    
     public function crearAutenticacion($usuario_id, $email, $password)
     {
         $salt = bin2hex(random_bytes(16));
@@ -28,7 +28,7 @@ class Autenticacion {
         ]);
     }
 
-    // Validar credenciales
+   
     public function login($email, $password)
     {
         $sql = "SELECT * FROM autenticacion WHERE email = ?";
@@ -41,7 +41,7 @@ class Autenticacion {
         $hash_check = hash('sha256', $password . $auth['salt']);
         if ($hash_check !== $auth['hash_password']) return false;
 
-        // Obtener usuario asociado
+        
         $sql2 = "SELECT * FROM usuarios WHERE id = ?";
         $stmt2 = $this->pdo->prepare($sql2);
         $stmt2->execute([$auth['usuario_id']]);

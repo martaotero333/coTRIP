@@ -6,7 +6,6 @@ include("../../sistema/inc/header.php");
 $viajeClass  = new Viaje();
 $usuario_id  = $_SESSION["usuario_id"];
 
-// Validar id
 if (!isset($_GET["id"]) || !ctype_digit($_GET["id"])) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
@@ -22,14 +21,12 @@ if (!$viaje || !$viajeClass->usuarioPuedeAcceder($usuario_id, $viaje_id)) {
 
 $esAnfitrion = ($viaje["usuario_id"] == $usuario_id);
 
-// Clases extra
 $valoracionClass  = new Valoracion();
 $comentarioClass  = new Comentario_viaje();
 $archivoClass     = new Archivo_viaje();
 $subplanClass     = new Subplan();
 $usuarioClass     = new Usuario();
 
-// Datos para bloques
 $media  = $valoracionClass->mediaViaje($viaje_id);
 $votos  = $valoracionClass->totalVotos($viaje_id);
 $ultimo = $comentarioClass->obtenerUltimo($viaje_id);
@@ -169,18 +166,6 @@ $hoy = date("Y-m-d");
         object-fit: cover;
     }
 
-    .subplan-card a {
-        display: inline-block;
-        margin-top: 10px;
-        color: #0077ff;
-        font-size: 14px;
-        text-decoration: none;
-    }
-
-    .subplan-card a:hover {
-        text-decoration: underline;
-    }
-
     .participantes-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -196,11 +181,6 @@ $hoy = date("Y-m-d");
         font-size: 14px;
     }
 
-    .participante-card strong {
-        display: block;
-        margin-bottom: 4px;
-    }
-
     .anfitrion-card {
         padding: 15px;
         background: white;
@@ -208,10 +188,6 @@ $hoy = date("Y-m-d");
         margin-bottom: 15px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.10);
         font-size: 14px;
-    }
-
-    .anfitrion-card small {
-        color: #555;
     }
 
     .btn-subplan {
@@ -222,12 +198,10 @@ $hoy = date("Y-m-d");
 
 <div class="viaje-dashboard">
 
-    <!-- IMAGEN PORTADA -->
     <img src="<?= $viaje['imagen'] ?: '/cotrip/images/fotoViajeDefault.jpg' ?>"
          class="viaje-header-img"
          alt="Imagen del viaje">
 
-    <!-- INFO PRINCIPAL -->
     <div class="viaje-info-card">
         <h3><?= htmlspecialchars($viaje['titulo']) ?></h3>
         <p><strong>📍 Destino:</strong> <?= htmlspecialchars($viaje['destino']) ?></p>
@@ -244,7 +218,6 @@ $hoy = date("Y-m-d");
         <p><?= nl2br(htmlspecialchars($viaje['descripcion'])) ?></p>
     </div>
 
-    <!-- GESTIONAR INVITADOS (solo anfitrión) -->
     <?php if ($esAnfitrion): ?>
         <div class="dashboard-block">
             <h3>👥 Gestión de invitados</h3>
@@ -256,7 +229,6 @@ $hoy = date("Y-m-d");
         </div>
     <?php endif; ?>
 
-    <!-- GESTIONAR PAGOS (solo anfitrión) -->
     <?php if ($esAnfitrion): ?>
         <div class="dashboard-block">
             <h3>💶 Gestión de pagos</h3>
@@ -268,7 +240,6 @@ $hoy = date("Y-m-d");
         </div>
     <?php endif; ?>
 
-    <!-- VALORAR VIAJE -->
     <?php if ($hoy >= $viaje["fecha_inicio"]): ?>
         <div class="dashboard-block">
             <h3>⭐ Valoración del viaje</h3>
@@ -280,7 +251,6 @@ $hoy = date("Y-m-d");
         </div>
     <?php endif; ?>
 
-    <!-- COMENTARIOS DEL VIAJE -->
     <div class="dashboard-block">
         <h3>💬 Foro del viaje</h3>
 
@@ -298,7 +268,6 @@ $hoy = date("Y-m-d");
         <?php endif; ?>
     </div>
 
-    <!-- CARRUSEL DE FOTOS -->
     <?php if (count($fotosDashboard) > 0): ?>
         <div class="dashboard-block">
             <h3>🖼 Galería de fotos</h3>
@@ -336,7 +305,19 @@ $hoy = date("Y-m-d");
         </div>
     <?php endif; ?>
 
-    <!-- SUBPLANES / ACTIVIDADES -->
+    <!-- ⭐⭐ BOTÓN DE GALERÍA ARREGLADO ⭐⭐ -->
+    <?php if ($hoy >= $viaje["fecha_inicio"]): ?>
+    <div class="dashboard-block">
+        <h3>📸 Galería del viaje</h3>
+
+        <a class="btn-primary-small"
+           href="/cotrip/plataforma/vista/galeria_viaje.php?id=<?= $viaje_id ?>">
+            📸 Galería del viaje →
+        </a>
+    </div>
+    <?php endif; ?>
+    <!-- ⭐⭐ FIN DEL BOTÓN ARREGLADO ⭐⭐ -->
+
     <div class="dashboard-block">
         <h3>🗂 Subplanes / Actividades</h3>
 
@@ -371,7 +352,6 @@ $hoy = date("Y-m-d");
         <?php endif; ?>
     </div>
 
-    <!-- PARTICIPANTES -->
     <div class="dashboard-block">
         <h3>👥 Participantes</h3>
 
@@ -381,7 +361,8 @@ $hoy = date("Y-m-d");
         </div>
 
         <?php if (count($participantes) == 0): ?>
-            <p>No hay más participantes.</p>
+            <p>No hay más particip.  
+            </p>
         <?php else: ?>
             <div class="participantes-grid">
                 <?php foreach ($participantes as $p): ?>
@@ -405,7 +386,6 @@ $hoy = date("Y-m-d");
 
 <?php include("../../sistema/inc/footer.php"); ?>
 
-<!-- SCRIPT DEL CARRUSEL -->
 <script>
 (function() {
     const fotos = document.querySelectorAll(".carrusel-foto");
@@ -424,10 +404,11 @@ $hoy = date("Y-m-d");
         mostrarFoto(indice);
     };
 
-    // Mostrar la primera foto
     mostrarFoto(0);
 })();
 </script>
+
+
 
 
 

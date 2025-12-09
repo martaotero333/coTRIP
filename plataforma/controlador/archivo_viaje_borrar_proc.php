@@ -17,19 +17,19 @@ if (!$archivo || !$viaje) {
     exit;
 }
 
-// Solo el anfitrión puede borrar
+
 if ($viaje["usuario_id"] != $usuario_id) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
 }
 
-// Borrar archivo del disco
+
 $ruta_fisica = $_SERVER['DOCUMENT_ROOT'].$archivo["ruta"];
 if (file_exists($ruta_fisica)) {
     unlink($ruta_fisica);
 }
 
-// Borrar de BD
+
 $archivoClass->borrarArchivo($id);
 
 header("Location: /cotrip/plataforma/vista/galeria_viaje.php?id=$viaje_id&msg=borrada");

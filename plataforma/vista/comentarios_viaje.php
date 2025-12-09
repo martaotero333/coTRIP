@@ -30,7 +30,7 @@ include("../../sistema/inc/header.php");
         <?= htmlspecialchars($viaje["titulo"]) ?>
     </h3>
 
-    <!-- ====================== LISTA DE COMENTARIOS ====================== -->
+   
     <div style="margin-bottom:30px;">
 
         <?php if (count($comentarios) == 0): ?>
@@ -49,7 +49,7 @@ include("../../sistema/inc/header.php");
                     margin-bottom:18px;
                 ">
 
-                    <!-- Avatar -->
+                    
                     <div style="
                         width:42px;
                         height:42px;
@@ -65,7 +65,7 @@ include("../../sistema/inc/header.php");
                         <?= $inicial ?>
                     </div>
 
-                    <!-- Burbuja -->
+                    
                     <div style="
                         background:white;
                         padding:12px 15px;
@@ -102,7 +102,7 @@ include("../../sistema/inc/header.php");
     </div>
 
 
-    <!-- ====================== FORMULARIO DE ENVÍO ====================== -->
+   
     <form action="/cotrip/plataforma/controlador/comentario_viaje_crear_proc.php" method="POST"
           style="
             background:white;

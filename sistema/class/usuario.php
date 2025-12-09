@@ -10,7 +10,6 @@ class Usuario {
         $this->pdo = $db->pdo;
     }
 
-    // Crear usuario solo con nombre
     public function crearUsuario($nombre)
     {
         $sql = "INSERT INTO usuarios (nombre) VALUES (?)";
@@ -20,7 +19,7 @@ class Usuario {
         return $this->pdo->lastInsertId();
     }
 
-    // Alias directo para compatibilidad con tu flujo anterior
+  
     public function crearUsuarioSimple($nombre)
     {
         return $this->crearUsuario($nombre);

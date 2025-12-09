@@ -10,7 +10,7 @@ $idiomas = $_POST['idiomas'];
 $bio = $_POST['bio'];
 $foto = null;
 
-// Manejo de foto
+
 if (isset($_FILES['foto']) && $_FILES['foto']['tmp_name']) {
     $ext = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
     $nombre_archivo = time() . "_" . bin2hex(random_bytes(5)) . "." . $ext;
@@ -26,6 +26,6 @@ if (isset($_FILES['foto']) && $_FILES['foto']['tmp_name']) {
 $usuarioClass = new Usuario();
 $usuarioClass->actualizarPerfil($usuario_id, $nombre, $pais, $idiomas, $bio, $foto);
 
-// Redirección al inicio de la plataforma
+
 header("Location: /cotrip/plataforma/controlador/mis_viajes_proc.php");
 exit;

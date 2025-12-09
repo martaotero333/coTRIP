@@ -22,42 +22,42 @@ include_once("sistema/inc/header.php");
 
         <div class="home-grid">
 
-            <!-- CARD 1 -->
+            
             <div class="home-feature">
                 <span class="emoji">📌</span>
                 <h3>Crea viajes</h3>
                 <p>Define destino, fechas, precio y toda la información importante.</p>
             </div>
 
-            <!-- CARD 2 -->
+            
             <div class="home-feature">
                 <span class="emoji">👥</span>
                 <h3>Invita a tus amigos</h3>
                 <p>Envía invitaciones y gestiona fácilmente quién participa.</p>
             </div>
 
-            <!-- CARD 3 -->
+            
             <div class="home-feature">
                 <span class="emoji">🗂️</span>
                 <h3>Subplanes</h3>
                 <p>Organiza actividades dentro del viaje y apunta a los participantes.</p>
             </div>
 
-            <!-- CARD 4 -->
+            
             <div class="home-feature">
                 <span class="emoji">💬</span>
                 <h3>Foro del viaje</h3>
                 <p>Habla con tu grupo, deja comentarios y comparte ideas.</p>
             </div>
 
-            <!-- ⭐ CARD 5 NUEVA -->
+            
             <div class="home-feature">
                 <span class="emoji">⭐</span>
                 <h3>Valora los viajes</h3>
                 <p>Deja tu puntuación y reseña cuando el viaje haya comenzado.</p>
             </div>
 
-            <!-- 💶 CARD 6 NUEVA -->
+            
             <div class="home-feature">
                 <span class="emoji">💶</span>
                 <h3>Gestiona tus gastos</h3>

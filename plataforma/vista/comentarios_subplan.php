@@ -33,7 +33,7 @@ include("../../sistema/inc/header.php");
         <?= htmlspecialchars($subplan["titulo"]) ?>
     </h3>
 
-    <!-- ====================== LISTA COMENTARIOS ====================== -->
+    
     <div style="margin-bottom:30px;">
 
         <?php if (count($comentarios) == 0): ?>
@@ -49,7 +49,7 @@ include("../../sistema/inc/header.php");
 
                 <div style="display:flex; gap:12px; margin-bottom:18px;">
                     
-                    <!-- Avatar -->
+                    
                     <div style="
                         width:42px;
                         height:42px;
@@ -65,7 +65,7 @@ include("../../sistema/inc/header.php");
                         <?= $inicial ?>
                     </div>
 
-                    <!-- Burbuja -->
+                    
                     <div style="
                         background:white;
                         padding:12px 15px;
@@ -102,7 +102,7 @@ include("../../sistema/inc/header.php");
     </div>
 
 
-    <!-- ====================== FORMULARIO ====================== -->
+    
     <form action="/cotrip/plataforma/controlador/comentario_subplan_crear_proc.php" method="POST"
           style="
             background:white;

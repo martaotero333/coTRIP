@@ -8,7 +8,7 @@ $usuario_id = $_SESSION["usuario_id"];
 $misViajes       = $viajeClass->obtenerViajesCreados($usuario_id);
 $viajesAceptados = $viajeClass->obtenerViajesAceptados($usuario_id);
 
-// Saber si no hay nada en ninguna categoría
+
 $noHayNada = (count($misViajes) == 0 && count($viajesAceptados) == 0);
 
 include("../../sistema/inc/header.php");
@@ -90,7 +90,7 @@ include("../../sistema/inc/header.php");
         gap: 18px;
     }
 
-    /* No tocamos .trip-card-v2, .trip-card-img, etc, asumimos que ya están en el CSS general */
+    
 
     @media (max-width: 600px) {
         .trips-page {
@@ -103,7 +103,7 @@ include("../../sistema/inc/header.php");
 
     <h2 class="trips-title">Mis Viajes ✈️</h2>
 
-    <!-- MENSAJE CUANDO NO HAY NADA -->
+    
     <?php if ($noHayNada): ?>
         <div class="trips-empty">
             <h3>Aún no tienes viajes 😥</h3>
@@ -117,7 +117,7 @@ include("../../sistema/inc/header.php");
 
     <div class="categories-wrapper">
 
-        <!-- VIAJES COMO ANFITRIONA -->
+        
         <?php if (count($misViajes) > 0): ?>
             <div class="category-box">
                 <h3 class="section-title">📌 Viajes creados por ti</h3>
@@ -159,7 +159,7 @@ include("../../sistema/inc/header.php");
             </div>
         <?php endif; ?>
 
-        <!-- VIAJES DONDE PARTICIPAS -->
+        
         <?php if (count($viajesAceptados) > 0): ?>
             <div class="category-box">
                 <h3 class="section-title">🌍 Viajes donde participas</h3>

@@ -23,9 +23,7 @@ $resumen = $gastosClass->resumenPorUsuario($viaje_id);
 
 <h2>💶 Gastos del viaje</h2>
 
-<!-- ============================================================
-     FORMULARIO AÑADIR GASTO
-============================================================ -->
+
 <div class="dashboard-block">
     <h3>Añadir gasto</h3>
 
@@ -52,10 +50,6 @@ $resumen = $gastosClass->resumenPorUsuario($viaje_id);
 </div>
 
 
-
-<!-- ============================================================
-     LISTADO DE GASTOS
-============================================================ -->
 <div class="dashboard-block">
     <h3>📄 Lista de gastos</h3>
 
@@ -86,11 +80,6 @@ $resumen = $gastosClass->resumenPorUsuario($viaje_id);
     <?php endif; ?>
 </div>
 
-
-
-<!-- ============================================================
-     RESUMEN POR USUARIO
-============================================================ -->
 <div class="dashboard-block">
     <h3>📊 Resumen por persona</h3>
 
@@ -116,7 +105,6 @@ $resumen = $gastosClass->resumenPorUsuario($viaje_id);
 </div>
 
 
-<!-- VOLVER -->
 <div style="margin-top:20px;">
     <a class="btn-primary-small" 
        href="/cotrip/plataforma/vista/viaje_dashboard.php?id=<?= $viaje_id ?>">

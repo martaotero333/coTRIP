@@ -2,7 +2,6 @@
 require_once("../../sistema/inc/include_classes.php");
 require_once("../../sistema/inc/sesiones_cotrip.php");
 
-// Validación del parámetro viaje_id
 if (!isset($_GET["viaje_id"]) || !ctype_digit($_GET["viaje_id"])) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
@@ -16,7 +15,7 @@ $invClass   = new Invitacion();
 
 $viaje = $viajeClass->obtenerViaje($viaje_id);
 
-// Solo anfitrión
+
 if (!$viaje || $viaje["usuario_id"] != $usuario_id) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
@@ -63,7 +62,7 @@ include("../../sistema/inc/header.php");
         font-size: 20px;
     }
 
-    /* FORMULARIO */
+   
     .invites-form {
         display: flex;
         flex-direction: column;
@@ -103,7 +102,7 @@ include("../../sistema/inc/header.php");
         background: #005fd1;
     }
 
-    /* LISTADO DE INVITACIONES */
+  
     .invites-list {
         list-style: none;
         padding: 0;

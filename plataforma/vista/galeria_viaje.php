@@ -2,7 +2,7 @@
 require_once("../../sistema/inc/include_classes.php");
 require_once("../../sistema/inc/sesiones_cotrip.php");
 
-// Validación básica del parámetro id
+
 if (!isset($_GET["id"]) || !ctype_digit($_GET["id"])) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
@@ -16,7 +16,7 @@ $archivoClass = new Archivo_viaje();
 
 $viaje = $viajeClass->obtenerViaje($viaje_id);
 
-// Si el viaje no existe o el usuario no puede acceder, fuera
+
 if (!$viaje || !$viajeClass->usuarioPuedeAcceder($usuario_id, $viaje_id)) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
@@ -185,7 +185,7 @@ include("../../sistema/inc/header.php");
         <h3 class="galeria-subtitulo"><?= htmlspecialchars($viaje["titulo"]) ?></h3>
     </div>
 
-    <!-- FORMULARIO DE SUBIDA (solo si el viaje ha empezado) -->
+    
     <?php if ($hoy >= $viaje["fecha_inicio"]): ?>
         <form action="/cotrip/plataforma/controlador/archivo_viaje_subir_proc.php"
               method="POST"
@@ -217,7 +217,7 @@ include("../../sistema/inc/header.php");
         </p>
     <?php endif; ?>
 
-    <!-- GRID DE FOTOS -->
+   
     <?php if (count($fotos) === 0): ?>
         <p class="galeria-vacia">
             Todavía no hay fotos subidas para este viaje.

@@ -153,7 +153,7 @@ include("../../sistema/inc/header.php");
     <h2 class="pagos-title">💶 Gestión de pagos del viaje</h2>
     <h3 class="pagos-subtitle"><?= htmlspecialchars($viaje["titulo"]) ?></h3>
 
-    <!-- RESUMEN POR USUARIO -->
+   
     <div class="pagos-block">
         <h3>📊 Resumen por usuario</h3>
 
@@ -184,7 +184,7 @@ include("../../sistema/inc/header.php");
         <?php endif; ?>
     </div>
 
-    <!-- DETALLE DE GASTOS -->
+  
     <div class="pagos-block">
         <h3>🧾 Detalle de gastos</h3>
 

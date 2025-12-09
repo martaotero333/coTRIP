@@ -10,9 +10,7 @@ class Viaje {
         $this->pdo = $db->pdo;
     }
 
-    /* ============================================================
-       CREAR VIAJE
-    ============================================================ */
+ 
     public function crearViaje($usuario_id, $titulo, $descripcion, $destino, 
                                $fecha_inicio, $fecha_fin, $precio_base, $imagen=null)
     {
@@ -29,9 +27,7 @@ class Viaje {
         return $this->pdo->lastInsertId();
     }
 
-    /* ============================================================
-       OBTENER UN VIAJE
-    ============================================================ */
+ 
     public function obtenerViaje($id)
     {
         $sql = "SELECT * FROM viajes WHERE id = ?";
@@ -41,9 +37,7 @@ class Viaje {
         return $stmt->fetch();
     }
 
-    /* ============================================================
-       OBTENER VIAJES DEL USUARIO COMO ANFITRIÓN
-    ============================================================ */
+    
     public function obtenerViajesCreados($usuario_id)
     {
         $sql = "SELECT * FROM viajes WHERE usuario_id = ? ORDER BY fecha_creacion DESC";
@@ -53,9 +47,7 @@ class Viaje {
         return $stmt->fetchAll();
     }
 
-    /* ============================================================
-       OBTENER VIAJES DONDE EL USUARIO FUE ACEPTADO
-    ============================================================ */
+    
     public function obtenerViajesAceptados($usuario_id)
     {
         $sql = "SELECT v.* 
@@ -70,9 +62,7 @@ class Viaje {
         return $stmt->fetchAll();
     }
 
-    /* ============================================================
-       ESTADO DEL VIAJE
-    ============================================================ */
+    
     public function estadoViaje($viaje)
     {
         $hoy = date("Y-m-d");
@@ -82,16 +72,14 @@ class Viaje {
         return "en curso";
     }
 
-    /* ============================================================
-       PERMISO: ¿USUARIO PUEDE ACCEDER A ESTE VIAJE?
-    ============================================================ */
+    
     public function usuarioPuedeAcceder($usuario_id, $viaje_id)
     {
-        // 1. Si es anfitrión → OK
+        
         $v = $this->obtenerViaje($viaje_id);
         if ($v['usuario_id'] == $usuario_id) return true;
 
-        // 2. Si está aceptado → OK
+        
         $sql = "SELECT id FROM invitaciones WHERE viaje_id = ? AND usuario_id = ? AND estado = 'aceptada'";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$viaje_id, $usuario_id]);

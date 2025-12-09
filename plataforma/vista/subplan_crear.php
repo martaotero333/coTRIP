@@ -2,7 +2,7 @@
 require_once("../../sistema/inc/include_classes.php");
 require_once("../../sistema/inc/sesiones_cotrip.php");
 
-// Validar parámetro viaje
+
 if (!isset($_GET["viaje"]) || !ctype_digit($_GET["viaje"])) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
@@ -14,7 +14,7 @@ $usuario_id = $_SESSION["usuario_id"];
 $viajeClass = new Viaje();
 $viaje      = $viajeClass->obtenerViaje($viaje_id);
 
-// Comprobar que el viaje existe y que el usuario es el anfitrión
+
 if (!$viaje || $viaje["usuario_id"] != $usuario_id) {
     header("Location: /cotrip/plataforma/vista/error_permisos.php");
     exit;
@@ -22,7 +22,7 @@ if (!$viaje || $viaje["usuario_id"] != $usuario_id) {
 
 include("../../sistema/inc/header.php");
 
-// Para limitar la fecha de la actividad al rango del viaje (si está definido)
+
 $minFecha = !empty($viaje["fecha_inicio"]) ? $viaje["fecha_inicio"] : "";
 $maxFecha = !empty($viaje["fecha_fin"]) ? $viaje["fecha_fin"] : "";
 ?>

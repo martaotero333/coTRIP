@@ -1,5 +1,4 @@
 <?php
-// Obtener datos del usuario si está logueado
 $usuarioHeader = null;
 if (isset($_SESSION["usuario_id"])) {
     $uClass = new Usuario();
@@ -22,7 +21,6 @@ if (isset($_SESSION["usuario_id"])) {
             <a href="/cotrip/plataforma/vista/mis_gastos.php">Mis gastos</a>
             <a href="/cotrip/plataforma/vista/viaje_crear.php">Crear viaje</a>
 
-            <!-- Perfil con dropdown -->
             <div class="perfil-dropdown">
 
                 <div class="perfil-trigger">
@@ -54,9 +52,7 @@ if (isset($_SESSION["usuario_id"])) {
 </nav>
 
 <style>
-/* ===========================
-   HEADER ESTILO COTRIP
-=========================== */
+
 
 .nav-bar {
     display: flex;
@@ -64,13 +60,13 @@ if (isset($_SESSION["usuario_id"])) {
     align-items: center;
     padding: 14px 5%;
     background: #ffffff;
-    border-bottom: none; /* sin línea */
+    border-bottom: none;
 }
 
 .logo {
-    font-size: 32px;            /* logo más grande */
+    font-size: 32px;            
     font-weight: 800;
-    color: #ff6f6f;             /* ← color del CoTRIP del hero */
+    color: #ff6f6f;             
     letter-spacing: -0.5px;
     text-decoration: none;
 }
@@ -86,9 +82,6 @@ if (isset($_SESSION["usuario_id"])) {
     color: #0077ff;
 }
 
-/* ===========================
-   PERFIL DROPDOWN
-=========================== */
 
 .perfil-dropdown {
     position: relative;
@@ -109,7 +102,7 @@ if (isset($_SESSION["usuario_id"])) {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: #5b2245;   /* ← COLOR EXACTO DE TU AVATAR */
+    background: #5b2245;   
     color: #fff;
     display: flex;
     align-items: center;
@@ -157,7 +150,7 @@ if (isset($_SESSION["usuario_id"])) {
 </style>
 
 <script>
-// Dropdown simple
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const trigger = document.querySelector(".perfil-trigger");
